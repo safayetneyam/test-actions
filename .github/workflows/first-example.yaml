@@ -13,8 +13,3 @@ jobs:
                 cat README.md
             - name:  Generate ASCII Artwork
               run: cowsay -f dragon "Run for Cover, I'm a Dragon .... RAWR" >> dragon.txt
-
-            # - name: List Files
-            #   run: 
-            # - name: Read File
-            #   run: cat README.md
