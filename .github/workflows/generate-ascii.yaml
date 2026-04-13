@@ -1,16 +1,26 @@
 name: Generate ASCII Workflow
 on: push
 jobs:
-    ascii_generate:
+    build_job_1:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v4
-
-            - name: List All the Files
-              run: ls -ltra
-
-            - name: Executing Shell Script
-              run: |
-                chmod +x ascii-script.sh
-                ./ascii-script.sh
+            - name: Install Cowsay Program
+              run: sudo apt-get install cowsay -y
+            - name: Execute Cowsay CMD
+              run: cowsay -f dragon "Run for Cover, I'm a Dragon!.... RAWR" >> dragon.txt
+            - name: Sleep for 30 Seconds
+              run: sleep 30
+    test_job_1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Sleep for 10 Seconds
+              run: sleep 10
+            - name: Test File Exists
+              run: grep -i "dragon" dragon.txt
+    deploy_job_3:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Read File
+              run: cat dragon.txt
+            - name: Deploy
+              run: echo "Deploying ... .. ."
